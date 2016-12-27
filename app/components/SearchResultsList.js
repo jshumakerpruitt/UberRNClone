@@ -4,20 +4,27 @@ import uuid from 'uuid/v4'
 
 import SearchResultsRow from './SearchResultsRow'
 
+    const rowHasChanged = (r1, r2) => r1 !== r2
+const ds = new ListView.DataSource({ rowHasChanged, })
+
 export default class SearchResultsList extends Component {
   constructor(props) {
     super(props)
-    const rowHasChanged = (r1, r2) => r1 !== r2
 
-    const ds = new ListView.DataSource({ rowHasChanged, })
     this.state = {
-      dataSource: ds.cloneWithRows([1,2,3,4,6,7,8])
+      dataSource: ds.cloneWithRows(props.recentLocations)
     }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      dataSource: ds.cloneWithRows(nextProps.recentLocations)
+    })
   }
 
   _renderRow(rowData) {
     return (
-      <SearchResultsRow rowData={rowData} />
+      <SearchResultsRow {...rowData }/>
     );
   }
 

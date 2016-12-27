@@ -27,7 +27,7 @@ class Main extends Component {
       <View>
         <LocationSearchHeader openSearch={this.props.openSearch} />
         <LocationSearchResults visible={this.props.searchIsOpen}>
-          <SearchResultsList />
+          <SearchResultsList recentLocations={recentLocations}/>
         </LocationSearchResults>
       </View>
     )

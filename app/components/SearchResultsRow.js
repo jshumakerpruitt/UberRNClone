@@ -6,9 +6,25 @@ import AssetMap from '../config/AssetMap'
 export default class SearchResultsRow extends Component {
 
   render() {
+    console.log(this.props)
+    const {icon, title, subtitle} = this.props
+
     return (
       <View style={styles.container}>
-        <Text>row</Text>
+        <View style={styles.iconContainer}>
+          <Image
+            style={styles.icon}
+            source={AssetMap[icon]}
+          />
+        </View>
+        <View style={styles.textContainer}>
+          <Text style={styles.title}>
+            {title}
+          </Text>
+          <Text style={styles.subtitle}>
+            {subtitle}
+          </Text>
+        </View>
       </View>
     )
   }
@@ -16,7 +32,28 @@ export default class SearchResultsRow extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    height: 60,
-  }
+    flexDirection: 'row',
+  },
+  iconContainer: {
+    justifyContent: 'center',
+    paddingLeft: 10,
+    paddingRight: 10,
+  },
+  icon: {
+    height: 15,
+    width: 15,
+  },
+  textContainer: {
+    justifyContent: 'space-between',
+    paddingTop: 12,
+    paddingBottom: 12,
+  },
+  title: {
+    fontSize: 15,
+    color: 'black',
+  },
+  subtitle: {
+    fontSize: 13,
+    color: '#A4A4AC',
+  },
 })
