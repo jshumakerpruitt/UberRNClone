@@ -5,10 +5,14 @@ import * as Animatable from 'react-native-animatable'
 export default class LocationSearchHeader extends Component {
 
   render() {
-    return null
+    return (
+      <View style={styles.searchResults}>
+      </View>
+    );
   }
 }
 
 const styles = StyleSheet.create({
-
+  searchResults: {
+  },
 })

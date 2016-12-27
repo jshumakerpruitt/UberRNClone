@@ -22,7 +22,7 @@ class Main extends Component {
 
     return (
       <View>
-
+        <LocationSearchHeader />
       </View>
     )
   }
