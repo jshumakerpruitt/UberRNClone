@@ -21,6 +21,7 @@ export default class LocationSearchHeader extends Component {
   }
 
   move() {
+    this.props.openSearch()
     this.refs.input.transitionTo({
     }, 800)
 

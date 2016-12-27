@@ -2,6 +2,8 @@ import React, { Component, PropTypes } from 'react'
 import { StyleSheet, View, Image } from 'react-native'
 import { connect } from 'react-redux'
 
+import { globalActionCreators } from '../redux/global'
+
 import {
   LocationButtonGroup,
   LocationSearchHeader,
@@ -13,6 +15,7 @@ import {
 const mapStateToProps = (state) => ({
   recentLocations: state.global.recentLocations,
   shortcutLocations: state.global.recentLocations.slice(0, 3),
+  searchIsOpen: state.global.searchIsOpen,
 })
 
 class Main extends Component {
@@ -22,8 +25,8 @@ class Main extends Component {
 
     return (
       <View>
-        <LocationSearchHeader />
-        <LocationSearchResults>
+        <LocationSearchHeader openSearch={this.props.openSearch} />
+        <LocationSearchResults visible={this.props.searchIsOpen}>
           <SearchResultsList />
         </LocationSearchResults>
       </View>
@@ -35,4 +38,4 @@ const styles = StyleSheet.create({
 
 })
 
-export default connect(mapStateToProps)(Main)
+export default connect(mapStateToProps, globalActionCreators)(Main)

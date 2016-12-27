@@ -45,7 +45,6 @@ export default class SearchResultsList extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    top: 122,
   },
   separator: {
     flex: 1,

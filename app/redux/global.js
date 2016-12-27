@@ -1,7 +1,13 @@
-export const globalActionCreators = {
+const types = {
+  OPEN_SEARCH: 'OPEN_SEARCH'
 }
 
-const types = {
+const openSearch = () => ({
+  type: types.OPEN_SEARCH,
+})
+
+export const globalActionCreators = {
+  openSearch,
 }
 
 const initialState = {
@@ -11,12 +17,17 @@ const initialState = {
     {id: 2, icon: 'recent', title: 'Facebook HQ', subtitle: '888 Brannan St, San Francisco, CA'},
     {id: 3, icon: 'recent', title: '123 Apple Road', subtitle: 'Cupertino, CA'},
     {id: 4, icon: 'recent', title: '445 1st St', subtitle: 'Sunnyvale, CA'},
-  ]
+  ],
+  searchIsOpen: false,
 }
 
 
 export default global = (state = initialState, action) => {
   switch(action.type) {
+    case types.OPEN_SEARCH:
+      return Object.assign({}, state, {
+        searchIsOpen: true
+      })
     default:
       return state
   }
