@@ -23,6 +23,9 @@ class Main extends Component {
     return (
       <View>
         <LocationSearchHeader />
+        <LocationSearchResults>
+          <SearchResultsList />
+        </LocationSearchResults>
       </View>
     )
   }

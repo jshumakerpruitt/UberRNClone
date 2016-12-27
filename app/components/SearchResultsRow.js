@@ -6,10 +6,17 @@ import AssetMap from '../config/AssetMap'
 export default class SearchResultsRow extends Component {
 
   render() {
-    return null
+    return (
+      <View style={styles.container}>
+        <Text>row</Text>
+      </View>
+    )
   }
 }
 
 const styles = StyleSheet.create({
-
+  container: {
+    flex: 1,
+    height: 60,
+  }
 })
