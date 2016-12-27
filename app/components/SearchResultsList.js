@@ -27,7 +27,7 @@ export default class SearchResultsList extends Component {
         style={styles.separator}
         key={uuid()}
       />
-      )
+    )
   }
 
   render() {
