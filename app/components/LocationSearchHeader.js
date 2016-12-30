@@ -26,8 +26,10 @@ export default class LocationSearchHeader extends Component {
     }, 800)
 
     this.refs.container.transitionTo({
+      height: 122,
       top: 0,
-      height: 114,
+      left: 0,
+      right: 0,
     })
 
     this.refs.source.transitionTo({
@@ -38,6 +40,9 @@ export default class LocationSearchHeader extends Component {
     this.refs.dest.transitionTo({
       backgroundColor: '#d7d7d7',
     })
+  }
+
+  componentDidMount() {
   }
 
   render() {
@@ -88,28 +93,34 @@ export default class LocationSearchHeader extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    zIndex: 1,
+    position: 'absolute',
     height: 60,
-    top: 62,
-    paddingBottom: 4,
+    top: 80,
+    left: 20,
+    right: 20,
+    zIndex: 1,
     flexDirection: 'column',
     paddingLeft: 10,
     paddingRight: 10,
     justifyContent: 'flex-end',
+    backgroundColor: 'white',
   },
+
   inner: {
+    position: 'relative',
+    height: 60,
     justifyContent: 'space-between',
     opacity: 1,
     zIndex: 1,
   },
   source: {
-    backgroundColor: 'white',
     height: 30,
-    position: 'relative',
     borderRadius: 5,
     opacity: 0,
+    bottom: 30,
   },
   dest: {
+    bottom: 15,
     zIndex: 2,
     opacity: 1,
     paddingLeft: 5,
@@ -117,9 +128,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: 'white',
     height: 30,
-    position: 'relative',
     borderRadius: 5,
-    marginTop: 5,
   },
   input: {
     height: 30,

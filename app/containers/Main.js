@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react'
-import { StyleSheet, View, Image } from 'react-native'
+import { Dimensions, StyleSheet, View, Image } from 'react-native'
 import { connect } from 'react-redux'
+import MapView from 'react-native-maps';
 
 import { globalActionCreators } from '../redux/global'
 
@@ -23,19 +24,49 @@ class Main extends Component {
   render() {
     const {recentLocations, shortcutLocations} = this.props
 
+    const {width: windowWidth, height: windowHeight} = Dimensions.get('window')
+    const style = {
+      height: windowHeight,
+      width: windowWidth,
+      zIndex: 0,
+    }
+
     return (
-      <View>
-        <LocationSearchHeader openSearch={this.props.openSearch} />
+      <View
+        style={styles.main}
+      >
+        <LocationSearchHeader
+          openSearch={this.props.openSearch}
+        />
+        <MapView
+          style={style}
+          initialRegion={{
+            latitude: 37.78825,
+            longitude: -122.4324,
+            latitudeDelta: 0.0922,
+            longitudeDelta: 0.0421,
+          }}
+        />
         <LocationSearchResults visible={this.props.searchIsOpen}>
           <SearchResultsList recentLocations={recentLocations}/>
         </LocationSearchResults>
+        <Image style={styles.controlButton} source={require('../images/icon-hamburger.png')} />
       </View>
     )
   }
 }
 
 const styles = StyleSheet.create({
-
+  main: {
+    top: 10,
+  },
+  controlButton: {
+    position: 'absolute',
+    height: 20,
+    width: 20,
+    top: 20,
+    left: 20,
+  }
 })
 
 export default connect(mapStateToProps, globalActionCreators)(Main)

@@ -7,14 +7,16 @@ export default class LocationSearchResults extends Component {
     this.refs.locationList.slideInUp(800)
   }
 
+  componentDidUpdate() {
+    this.refs.locationList.slideInUp(800)
+  }
   render() {
-    console.log(this.props)
     const {children, visible} = this.props
 
     const {width: windowWidth, height: windowHeight} = Dimensions.get('window')
 
     const style = {
-      top: visible ? 128 : windowHeight,
+      top: visible ? 122 : windowHeight,
       height: windowHeight,
       width: windowWidth,
     }
@@ -33,5 +35,6 @@ export default class LocationSearchResults extends Component {
 const styles = StyleSheet.create({
   container: {
     position: 'absolute',
+    backgroundColor: 'white',
   },
 })
