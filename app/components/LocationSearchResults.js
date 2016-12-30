@@ -3,12 +3,10 @@ import { StyleSheet, Dimensions, View } from 'react-native'
 import * as Animatable from 'react-native-animatable'
 
 export default class LocationSearchResults extends Component {
-  componentDidMount() {
-    this.refs.locationList.slideInUp(800)
-  }
-
-  componentDidUpdate() {
-    this.refs.locationList.slideInUp(800)
+  componentWillReceiveProps(newProps) {
+    if(newProps.visible && !this.props.visible) {
+      this.refs.locationList.slideInUp(800)
+    }
   }
   render() {
     const {children, visible} = this.props

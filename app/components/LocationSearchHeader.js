@@ -17,20 +17,29 @@ export default class LocationSearchHeader extends Component {
       dest: 'Where to?',
       source: 'Office',
     }
+
     this.move = this.move.bind(this)
   }
 
   move() {
     this.props.openSearch()
-    this.refs.input.transitionTo({
-    }, 800)
+    this.refs.inner.transitionTo({
+      height: 112,
+    })
+       this.refs.squareTop.transitionTo({
+         opacity: 1,
+       })
 
+       this.refs.vertLine.transitionTo({
+         opacity: 1,
+       })
     this.refs.container.transitionTo({
       height: 122,
       top: 0,
       left: 0,
       right: 0,
     })
+
 
     this.refs.source.transitionTo({
       backgroundColor: '#f7f7f7',
@@ -54,34 +63,52 @@ export default class LocationSearchHeader extends Component {
         <TouchableWithoutFeedback onPress={this.move} >
           <Animatable.View
             style={styles.inner}
-            ref='input'
+            ref='inner'
           >
 
             <Animatable.View
-              style={styles.source}
-              ref='source'
+              style={styles.iconGroup}
+              ref='iconGroup'
             >
-              <TextInput
-                style={styles.input}
-                onChangeText={(source) => this.setState({source,})}
-                value={this.state.source}
-                onFocus={this.move}
-                clearTextOnFocus={true}
+              <Animatable.View style={styles.squareTop}
+                ref='squareTop'
               />
+              <Animatable.View style={styles.vertLine}
+                ref='vertLine'
+              />
+              <View style={styles.squareBottom} />
             </Animatable.View>
 
             <Animatable.View
-              style={styles.dest}
-              ref='dest'
+              style={styles.inputGroup}
+              ref='inputGroup'
             >
-              <TextInput
-                style={styles.input}
-                onChangeText={(dest) => this.setState({dest,})}
-                onSubmitEditing={this.handleSubmit}
-                value={this.state.dest}
-                onFocus={this.move}
-                clearTextOnFocus={true}
-              />
+              <Animatable.View
+                style={styles.source}
+                ref='source'
+              >
+                <TextInput
+                  style={styles.input}
+                  onChangeText={(source) => this.setState({source,})}
+                  value={this.state.source}
+                  onFocus={this.move}
+                  clearTextOnFocus={true}
+                />
+              </Animatable.View>
+
+              <Animatable.View
+                style={styles.dest}
+                ref='dest'
+              >
+                <TextInput
+                  style={styles.input}
+                  onChangeText={(dest) => this.setState({dest,})}
+                  onSubmitEditing={this.handleSubmit}
+                  value={this.state.dest}
+                  onFocus={this.move}
+                  clearTextOnFocus={true}
+                />
+              </Animatable.View>
             </Animatable.View>
 
           </Animatable.View>
@@ -100,7 +127,6 @@ const styles = StyleSheet.create({
     right: 20,
     zIndex: 1,
     flexDirection: 'column',
-    paddingLeft: 10,
     paddingRight: 10,
     justifyContent: 'flex-end',
     backgroundColor: 'white',
@@ -108,19 +134,22 @@ const styles = StyleSheet.create({
 
   inner: {
     position: 'relative',
+    flexDirection: 'row',
     height: 60,
     justifyContent: 'space-between',
     opacity: 1,
     zIndex: 1,
   },
   source: {
-    height: 30,
+    position: 'absolute',
     borderRadius: 5,
     opacity: 0,
-    bottom: 30,
+    height: 30,
+    bottom: 50,
+    right: 0,
+    left: 0,
   },
   dest: {
-    bottom: 15,
     zIndex: 2,
     opacity: 1,
     paddingLeft: 5,
@@ -129,8 +158,51 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     height: 30,
     borderRadius: 5,
+    position: 'absolute',
+    bottom: 15,
+    right: 0,
+    left: 0,
   },
   input: {
     height: 30,
-  }
+  },
+  iconGroup: {
+    zIndex: 2,
+    flexDirection: 'column',
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  inputGroup: {
+    flex: 11,
+    zIndex: 2,
+    flexDirection: 'column',
+  },
+  squareTop: {
+    position: 'absolute',
+    left: 12,
+    bottom: 62,
+    height: 5,
+    width: 5,
+    backgroundColor: '#d7d7d7',
+    opacity: 0,
+    borderRadius: 3.5,
+  },
+  vertLine: {
+    opacity: 0,
+    position: 'absolute',
+    height: 20,
+    backgroundColor: '#d7d7d7',
+    width: 1.5,
+    left: 14,
+    bottom: 37,
+  },
+  squareBottom: {
+    position: 'absolute',
+    left: 12,
+    bottom: 27,
+    height: 5,
+    width: 5,
+    backgroundColor: 'black',
+  },
 })

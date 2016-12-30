@@ -58,7 +58,7 @@ class Main extends Component {
 
 const styles = StyleSheet.create({
   main: {
-    top: 10,
+    top: 20,
   },
   controlButton: {
     position: 'absolute',
