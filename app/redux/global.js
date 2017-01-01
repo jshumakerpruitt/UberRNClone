@@ -1,13 +1,20 @@
 const types = {
-  OPEN_SEARCH: 'OPEN_SEARCH'
+  OPEN_SEARCH: 'OPEN_SEARCH',
+  CLOSE_SEARCH: 'CLOSE_SEARCH'
 }
 
 const openSearch = () => ({
   type: types.OPEN_SEARCH,
 })
 
+const closeSearch = () => ({
+  type: types.CLOSE_SEARCH,
+})
+
+
 export const globalActionCreators = {
   openSearch,
+  closeSearch,
 }
 
 const initialState = {
@@ -27,6 +34,10 @@ export default global = (state = initialState, action) => {
     case types.OPEN_SEARCH:
       return Object.assign({}, state, {
         searchIsOpen: true
+      })
+    case types.CLOSE_SEARCH:
+      return Object.assign({}, state, {
+        searchIsOpen: false
       })
     default:
       return state

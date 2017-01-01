@@ -26,20 +26,19 @@ export default class LocationSearchHeader extends Component {
     this.refs.inner.transitionTo({
       height: 112,
     })
-       this.refs.squareTop.transitionTo({
-         opacity: 1,
-       })
+    this.refs.squareTop.transitionTo({
+      opacity: 1,
+    })
 
-       this.refs.vertLine.transitionTo({
-         opacity: 1,
-       })
+    this.refs.vertLine.transitionTo({
+      opacity: 1,
+    })
     this.refs.container.transitionTo({
       height: 122,
       top: 0,
       left: 0,
       right: 0,
     })
-
 
     this.refs.source.transitionTo({
       backgroundColor: '#f7f7f7',
@@ -51,7 +50,39 @@ export default class LocationSearchHeader extends Component {
     })
   }
 
-  componentDidMount() {
+  moveBack() {
+    this.refs.inner.transitionTo({
+      height: 60,
+    })
+    this.refs.squareTop.transitionTo({
+      opacity: 0,
+    })
+
+    this.refs.vertLine.transitionTo({
+      opacity: 0,
+    })
+    this.refs.container.transitionTo({
+      height: 60,
+      top: 80,
+      left: 20,
+      right: 20,
+    })
+
+    this.refs.source.transitionTo({
+      backgroundColor: '#f7f7f7',
+      opacity: 0,
+    })
+
+    this.refs.dest.transitionTo({
+      backgroundColor: '#FFF',
+    })
+  }
+
+  componentWillReceiveProps(nextProps) {
+    console.log('moving back')
+    if(!nextProps.searchIsOpen) {
+      this.moveBack()
+    }
   }
 
   render() {
@@ -169,18 +200,18 @@ const styles = StyleSheet.create({
   iconGroup: {
     zIndex: 2,
     flexDirection: 'column',
-    flex: 1,
+    flex: 3,
     justifyContent: 'center',
     alignItems: 'center',
   },
   inputGroup: {
-    flex: 11,
+    flex: 18,
     zIndex: 2,
     flexDirection: 'column',
   },
   squareTop: {
     position: 'absolute',
-    left: 12,
+    left: 24,
     bottom: 62,
     height: 5,
     width: 5,
@@ -194,12 +225,12 @@ const styles = StyleSheet.create({
     height: 20,
     backgroundColor: '#d7d7d7',
     width: 1.5,
-    left: 14,
+    left: 25.5,
     bottom: 37,
   },
   squareBottom: {
     position: 'absolute',
-    left: 12,
+    left: 24,
     bottom: 27,
     height: 5,
     width: 5,

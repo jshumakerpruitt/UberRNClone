@@ -6,7 +6,6 @@ import AssetMap from '../config/AssetMap'
 export default class SearchResultsRow extends Component {
 
   render() {
-    console.log(this.props)
     const {icon, title, subtitle} = this.props
 
     return (
