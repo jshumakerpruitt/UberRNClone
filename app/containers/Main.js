@@ -45,6 +45,7 @@ class Main extends Component {
           <SearchResultsList recentLocations={recentLocations}/>
         </LocationSearchResults>
         <Image style={styles.controlButton} source={require('../images/icon-hamburger.png')} />
+        <LocationButtonGroup visible={!this.props.searchIsOpen} locations={recentLocations.slice(0,3)}/>
       </View>
     )
   }

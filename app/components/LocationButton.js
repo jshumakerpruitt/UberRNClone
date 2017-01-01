@@ -6,7 +6,17 @@ import AssetMap from '../config/AssetMap'
 export default class LocationButton extends Component {
 
   render() {
-    return null
+    const { icon } = this.props
+    return (
+      <TouchableOpacity
+        style={styles.container}
+      >
+        <Image
+          style={styles.image}
+          source={AssetMap[icon]}
+        />
+      </TouchableOpacity>
+    )
   }
 }
 
