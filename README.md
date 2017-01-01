@@ -1,2 +1,2 @@
 # Uber Clone in ReactNative
-![Uber screenshot](jshumakerpruitt.github.com/UberRNClone/app/images/uber_rn.gif)
+<img src="/app/images/uber_rn.gif?raw=true" style="maxWidth 600px;" />
