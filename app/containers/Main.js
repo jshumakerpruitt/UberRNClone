@@ -40,12 +40,6 @@ class Main extends Component {
         />
         <MapView
           style={style}
-          initialRegion={{
-            latitude: 37.78825,
-            longitude: -122.4324,
-            latitudeDelta: 0.0922,
-            longitudeDelta: 0.0421,
-          }}
         />
         <LocationSearchResults visible={this.props.searchIsOpen}>
           <SearchResultsList recentLocations={recentLocations}/>
