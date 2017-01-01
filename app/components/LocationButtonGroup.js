@@ -16,6 +16,7 @@ export default class LocationButtonGroup extends Component {
   renderItem = (location, i) => {
     const {icon, title} = location
     const {onPressLocation} = this.props
+    const addressString = `${location.title} ${location.subtitle}`
 
     return (
       <View
@@ -24,7 +25,7 @@ export default class LocationButtonGroup extends Component {
       >
         <LocationButton
           icon={icon}
-          onPress={onPressLocation.bind(this, location)}
+          onPressLocation={onPressLocation.bind(this, addressString)}
         />
         <View style={styles.itemSpacer} />
         <Text style={styles.itemText}>

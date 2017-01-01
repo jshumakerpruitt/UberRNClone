@@ -4,12 +4,12 @@ import { StyleSheet, Image, TouchableOpacity } from 'react-native'
 import AssetMap from '../config/AssetMap'
 
 export default class LocationButton extends Component {
-
   render() {
     const { icon } = this.props
     return (
       <TouchableOpacity
         style={styles.container}
+        onPress={this.props.onPressLocation}
       >
         <Image
           style={styles.image}

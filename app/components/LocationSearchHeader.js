@@ -11,13 +11,8 @@ import {
 import * as Animatable from 'react-native-animatable'
 
 export default class LocationSearchHeader extends Component {
-  constructor() {
-    super()
-    this.state = {
-      dest: 'Where to?',
-      source: 'Office',
-    }
-
+  constructor(props) {
+    super(props)
     this.move = this.move.bind(this)
   }
 
@@ -120,8 +115,8 @@ export default class LocationSearchHeader extends Component {
               >
                 <TextInput
                   style={styles.input}
-                  onChangeText={(source) => this.setState({source,})}
-                  value={this.state.source}
+                  onChangeText={(source) => this.props.setSource({source,})}
+                  value={this.props.source}
                   onFocus={this.move}
                   clearTextOnFocus={true}
                 />
@@ -133,9 +128,9 @@ export default class LocationSearchHeader extends Component {
               >
                 <TextInput
                   style={styles.input}
-                  onChangeText={(dest) => this.setState({dest,})}
+                  onChangeText={(destination) => this.props.setDestination({destination,})}
                   onSubmitEditing={this.handleSubmit}
-                  value={this.state.dest}
+                  value={this.props.destination}
                   onFocus={this.move}
                   clearTextOnFocus={true}
                 />

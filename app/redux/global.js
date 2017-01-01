@@ -1,6 +1,8 @@
 const types = {
   OPEN_SEARCH: 'OPEN_SEARCH',
-  CLOSE_SEARCH: 'CLOSE_SEARCH'
+  CLOSE_SEARCH: 'CLOSE_SEARCH',
+  SET_DESTINATION: 'SET_DESTINATION',
+  SET_SOURCE: 'SET_SOURCE',
 }
 
 const openSearch = () => ({
@@ -11,10 +13,21 @@ const closeSearch = () => ({
   type: types.CLOSE_SEARCH,
 })
 
+const setDestination = (destination) => ({
+  type: types.SET_DESTINATION,
+  destination,
+})
+
+const setSource = (source) => ({
+  type: types.SET_SOURCE,
+  source,
+})
 
 export const globalActionCreators = {
   openSearch,
   closeSearch,
+  setDestination,
+  setSource,
 }
 
 const initialState = {
@@ -26,6 +39,8 @@ const initialState = {
     {id: 4, icon: 'recent', title: '445 1st St', subtitle: 'Sunnyvale, CA'},
   ],
   searchIsOpen: false,
+  destination: 'Where to?',
+  source: 'Office',
 }
 
 
@@ -38,6 +53,14 @@ export default global = (state = initialState, action) => {
     case types.CLOSE_SEARCH:
       return Object.assign({}, state, {
         searchIsOpen: false
+      })
+    case types.SET_DESTINATION:
+      return Object.assign({}, state, {
+        destination: action.destination,
+      })
+    case types.SET_SOURCE:
+      return Object.assign({}, state, {
+        source: action.source,
       })
     default:
       return state

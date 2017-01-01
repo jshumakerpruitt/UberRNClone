@@ -19,6 +19,8 @@ const mapStateToProps = (state) => ({
   recentLocations: state.global.recentLocations,
   shortcutLocations: state.global.recentLocations.slice(0, 3),
   searchIsOpen: state.global.searchIsOpen,
+  destination: state.global.destination,
+  source: state.global.source,
 })
 
 class Main extends Component {
@@ -50,6 +52,10 @@ class Main extends Component {
           searchIsOpen={this.props.searchIsOpen}
           openSearch={this.props.openSearch}
           closeSearch={this.props.closeSearch}
+          destination={this.props.destination}
+          source={this.props.source}
+          setDestination={this.props.setDestination}
+          setSource={this.props.setSource}
         />
         <MapView
           style={style}
@@ -79,7 +85,11 @@ class Main extends Component {
             /> 
           }
         </TouchableOpacity>
-        <LocationButtonGroup visible={!this.props.searchIsOpen} locations={recentLocations.slice(0,3)}/>
+        <LocationButtonGroup
+          visible={!this.props.searchIsOpen}
+          locations={recentLocations.slice(0,3)}
+          onPressLocation={this.props.setDestination}
+        />
       </View>
     )
   }
