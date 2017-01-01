@@ -26,6 +26,8 @@ export default class LocationButtonGroup extends Component {
         <LocationButton
           icon={icon}
           onPressLocation={onPressLocation.bind(this, addressString)}
+          openSearch={this.props.openSearch}
+
         />
         <View style={styles.itemSpacer} />
         <Text style={styles.itemText}>

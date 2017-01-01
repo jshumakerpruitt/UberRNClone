@@ -74,9 +74,10 @@ export default class LocationSearchHeader extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log('moving back')
-    if(!nextProps.searchIsOpen) {
+    if(!nextProps.searchIsOpen && this.props.searchIsOpen) {
       this.moveBack()
+    } else if(nextProps.searchIsOpen && !this.props.searchIsOpen) {
+      this.move()
     }
   }
 
@@ -115,7 +116,7 @@ export default class LocationSearchHeader extends Component {
               >
                 <TextInput
                   style={styles.input}
-                  onChangeText={(source) => this.props.setSource({source,})}
+                  onChangeText={(source) => this.props.setSource(source)}
                   value={this.props.source}
                   onFocus={this.move}
                   clearTextOnFocus={true}
@@ -128,7 +129,7 @@ export default class LocationSearchHeader extends Component {
               >
                 <TextInput
                   style={styles.input}
-                  onChangeText={(destination) => this.props.setDestination({destination,})}
+                  onChangeText={(destination) => this.props.setDestination(destination)}
                   onSubmitEditing={this.handleSubmit}
                   value={this.props.destination}
                   onFocus={this.move}

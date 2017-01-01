@@ -1,14 +1,28 @@
 import React, { Component } from 'react'
-import { View, Text, Image, StyleSheet } from 'react-native'
+import { TouchableOpacity, View, Text, Image, StyleSheet } from 'react-native'
 
 import AssetMap from '../config/AssetMap'
 
 export default class SearchResultsRow extends Component {
+  constructor(props) {
+    super(props)
+    this._onPress = this._onPress.bind(this)
+
+  }
+
+  _onPress() {
+    const {icon, title, subtitle} = this.props
+    const addressString = `${title} ${subtitle}`
+    this.props.onPress(addressString)
+  }
 
   render() {
     const {icon, title, subtitle} = this.props
 
+
     return (
+
+      <TouchableOpacity onPress={this._onPress}>
       <View style={styles.container}>
         <View style={styles.iconContainer}>
           <Image
@@ -25,6 +39,7 @@ export default class SearchResultsRow extends Component {
           </Text>
         </View>
       </View>
+      </TouchableOpacity>
     )
   }
 }

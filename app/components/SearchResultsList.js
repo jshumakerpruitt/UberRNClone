@@ -24,7 +24,9 @@ export default class SearchResultsList extends Component {
 
   _renderRow(rowData) {
     return (
-      <SearchResultsRow {...rowData }/>
+      <SearchResultsRow
+        onPress={this.props.setSource}
+        {...rowData }/>
     );
   }
 
@@ -41,7 +43,7 @@ export default class SearchResultsList extends Component {
     return (
       <ListView
         style={styles.container}
-        renderRow={this._renderRow}
+        renderRow={this._renderRow.bind(this)}
         renderSeparator={this._renderSeparator}
         dataSource={this.state.dataSource}
       >

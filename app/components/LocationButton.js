@@ -9,7 +9,10 @@ export default class LocationButton extends Component {
     return (
       <TouchableOpacity
         style={styles.container}
-        onPress={this.props.onPressLocation}
+        onPress={() => {
+                this.props.openSearch()
+                this.props.onPressLocation()
+                }}
       >
         <Image
           style={styles.image}

@@ -67,7 +67,11 @@ class Main extends Component {
           }}
         />
         <LocationSearchResults visible={this.props.searchIsOpen}>
-          <SearchResultsList recentLocations={recentLocations}/>
+          <SearchResultsList
+            recentLocations={recentLocations}
+            setDestination={this.props.setDestination}
+            setSource={this.props.setSource}
+          />
         </LocationSearchResults>
         <TouchableOpacity
           style={styles.controlButton}
@@ -89,6 +93,7 @@ class Main extends Component {
           visible={!this.props.searchIsOpen}
           locations={recentLocations.slice(0,3)}
           onPressLocation={this.props.setDestination}
+          openSearch={this.props.openSearch}
         />
       </View>
     )
